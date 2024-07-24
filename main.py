@@ -1,14 +1,22 @@
 #Password encoder and decoder
-#each instance of x=1 is a place holder
 
 #encoder
 def encode(password):
     #Jason Schott's function, adds 3 to each digit
-    x=1
+    while True:
+        try:
+            newpassword = ''.join(str((int(char)+3)%10) for char in password)
+            break
+        except:
+            print("Password must consist of only numbers")
+            password = input("Please enter the password to encode:")
+    return newpassword
+    
 
 #decoder
 def decode(password):
     #Lance's function, Subtracts 3 from each digit
+    #x=1 is a place holder
     x=1
 
 #menu
@@ -22,10 +30,11 @@ def getchoice():
             choice = int(input("Please enter an option:"))
             break
         except:
+            printmenu()
             print("Choice must be a number between 1 and 3")
     return choice
 
-#main
+
 def main():
     #runs print menu then either calls encode or decode, or quits
     while True:
@@ -33,13 +42,20 @@ def main():
         choice = getchoice()
         if choice == 1:
             password = input("Please enter the password to encode: ")
-            password = encode(password)
-        if choice == 2:
-            decode(password)
-        if choice == 3:
+            newpassword = encode(password)
+            print("Your password has been encoded and stored!\n")
+        elif choice == 2:
+            #Your turn Lance
+            #x=1 is a place holder
+            x=1
+
+
+
+        elif choice == 3:
             break
         else:
-            print("Choice must be a number between 1 and 3")
+            print("Choice must be a number between 1 and 3\n")
+
 
         
             
