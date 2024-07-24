@@ -13,20 +13,36 @@ def decode(password):
 
 #menu
 def printmenu():
-    """Menu
-    -------------
-    1. Encode
-    2. Decode
-    3. Quit
+    print("Menu\n-------------\n1. Encode\n2. Decode\n3. Quit\n")
 
-    Please enter an option:
-    """
-    x=1    
+#gets choice
+def getchoice():
+    while True:
+        try:
+            choice = int(input("Please enter an option:"))
+            break
+        except:
+            print("Choice must be a number between 1 and 3")
+    return choice
 
 #main
 def main():
     #runs print menu then either calls encode or decode, or quits
-    x=1
+    while True:
+        printmenu()
+        choice = getchoice()
+        if choice == 1:
+            password = input("Please enter the password to encode: ")
+            password = encode(password)
+        if choice == 2:
+            decode(password)
+        if choice == 3:
+            break
+        else:
+            print("Choice must be a number between 1 and 3")
+
+        
+            
 
 if __name__ == "__main__":
     main()
