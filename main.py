@@ -14,10 +14,9 @@ def encode(password):
     
 
 #decoder
-def decode(password):
-    #Lance's function, Subtracts 3 from each digit
-    #x=1 is a place holder
-    x=1
+def decode(newpassword):
+    original_password = ''.join(str((int(char)+7)%10) for char in newpassword)
+    return original_password
 
 #menu
 def printmenu():
@@ -27,7 +26,7 @@ def printmenu():
 def getchoice():
     while True:
         try:
-            choice = int(input("Please enter an option:"))
+            choice = int(input("Please enter an option: "))
             break
         except:
             printmenu()
@@ -45,12 +44,8 @@ def main():
             newpassword = encode(password)
             print("Your password has been encoded and stored!\n")
         elif choice == 2:
-            #Your turn Lance
-            #x=1 is a place holder
-            x=1
-
-
-
+            original_password = decode(newpassword)
+            print(f"The encoded password is {newpassword}, and the original password is {original_password}.\n")
         elif choice == 3:
             break
         else:
